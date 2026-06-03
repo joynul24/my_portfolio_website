@@ -4,6 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { FiLogOut, FiPlus, FiEdit, FiTrash2, FiX } from 'react-icons/fi';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import axiosInstance from '../api/axiosInstance';
 
 const AdminDashboard = () => {
   const [token, setToken] = useState(localStorage.getItem('adminToken') || '');
@@ -28,7 +29,7 @@ const AdminDashboard = () => {
   const { data: projects, isLoading } = useQuery({
     queryKey: ['admin_projects'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:3000/api/projects');
+      const res = await axiosInstance.get('/projects');
       return res.data;
     },
     enabled: !!token
@@ -36,7 +37,7 @@ const AdminDashboard = () => {
 
 
   const createMutation = useMutation({
-    mutationFn: async (newProj) => await axios.post('http://localhost:3000/api/projects', newProj),
+    mutationFn: async (newProj) => await axiosInstance.post('/projects', newProj),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin_projects'] });
       toast.success('Project added successfully');
@@ -45,7 +46,7 @@ const AdminDashboard = () => {
   });
 
   const updateMutation = useMutation({
-    mutationFn: async ({ id, data }) => await axios.put(`http://localhost:3000/api/projects/${id}`, data),
+    mutationFn: async ({ id, data }) => await axiosInstance.put(`/projects/${id}`, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin_projects'] });
       toast.success('Project updated successfully');
@@ -54,7 +55,7 @@ const AdminDashboard = () => {
   });
 
   const deleteMutation = useMutation({
-    mutationFn: async (id) => await axios.delete(`http://localhost:3000/api/projects/${id}`),
+    mutationFn: async (id) => await axiosInstance.delete(`/projects/${id}`),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin_projects'] });
       toast.success('Project deleted');
@@ -64,7 +65,7 @@ const AdminDashboard = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:3000/api/admin/login', { password });
+      const res = await axiosInstance.post('/admin/login', { password });
       setToken(res.data.token);
       localStorage.setItem('adminToken', res.data.token);
       toast.success('Logged in successfully');
@@ -342,13 +343,13 @@ const AboutSettings = () => {
   const { data: profile, isLoading } = useQuery({
     queryKey: ['admin_profile'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:3000/api/profile');
+      const res = await axiosInstance.get('/profile');
       return res.data;
     }
   });
 
   const updateMutation = useMutation({
-    mutationFn: async (data) => await axios.put('http://localhost:3000/api/profile', data),
+    mutationFn: async (data) => await axiosInstance.put('/profile', data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin_profile'] });
       toast.success('About section updated successfully');
@@ -421,13 +422,13 @@ const SkillsSettings = () => {
   const { data: skills, isLoading } = useQuery({
     queryKey: ['admin_skills'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:3000/api/skills');
+      const res = await axiosInstance.get('/skills');
       return res.data;
     }
   });
 
   const createMutation = useMutation({
-    mutationFn: async (data) => await axios.post('http://localhost:3000/api/skills', data),
+    mutationFn: async (data) => await axiosInstance.post('/skills', data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin_skills'] });
       toast.success('Skill added');
@@ -436,7 +437,7 @@ const SkillsSettings = () => {
   });
 
   const deleteMutation = useMutation({
-    mutationFn: async (id) => await axios.delete(`http://localhost:3000/api/skills/${id}`),
+    mutationFn: async (id) => await axiosInstance.delete(`/skills/${id}`),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin_skills'] });
       toast.success('Skill deleted');

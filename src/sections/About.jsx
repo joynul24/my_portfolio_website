@@ -2,12 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 
 const About = () => {
   const { data: profile } = useQuery({
     queryKey: ['profile'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:3000/api/profile');
+      const res = await axiosInstance.get('/profile');
       return res.data;
     }
   });

@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaGithub, FaTerminal,FaGitAlt } from 'react-icons/fa';
 import { SiTailwindcss, SiJavascript, SiNextdotjs, SiExpress, SiMongodb, SiFirebase, SiStripe, SiJsonwebtokens, SiVercel, SiNetlify, SiDaisyui, SiTypescript, SiRedux, SiFigma,SiReactquery,SiMui,SiNestjs,SiMysql,SiPostgresql,SiDocker,SiRender,SiApachespark,SiGraphql } from 'react-icons/si';
+import axiosInstance from '../api/axiosInstance';
 
 const defaultIcons = {
   'HTML5': <FaHtml5 className="text-[#E34F26]" />,
@@ -41,9 +42,7 @@ const MySkills = () => {
  const { data: skills = [], isLoading } = useQuery({
   queryKey: ["skills"],
   queryFn: async () => {
-    const res = await axios.get(
-      "http://localhost:3000/api/skills"
-    );
+    const res = await axiosInstance.get("/skills");
 
     return Array.isArray(res.data) ? res.data : [];
   },
@@ -67,7 +66,7 @@ const MySkills = () => {
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-center max-w-5xl mx-auto">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 justify-center max-w-5xl mx-auto">
             {skills.map((skill, index) => {
               const Icon = defaultIcons[skill.name] || <FaTerminal className="text-cyan-400" />;
               return (

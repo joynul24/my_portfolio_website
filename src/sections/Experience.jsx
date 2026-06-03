@@ -72,7 +72,7 @@ const Experience = () => {
           className="text-center mb-16 md:mb-24"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-             Project Experience
+             Work Experience
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
             My professional journey in frontend development and the impactful projects I've worked on.
