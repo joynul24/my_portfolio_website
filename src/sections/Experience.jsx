@@ -59,7 +59,6 @@ const experiences = [
 ];
 
 
-
 const Experience = () => {
   return (
     <section id="experience-timeline" className="py-20 relative z-10 bg-transparent">
