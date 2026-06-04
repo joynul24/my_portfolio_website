@@ -66,7 +66,7 @@ const MySkills = () => {
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div>
           </div>
         ) : (
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 justify-center max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-6 justify-center max-w-5xl mx-auto">
             {skills.map((skill, index) => {
               const Icon = defaultIcons[skill.name] || <FaTerminal className="text-cyan-400" />;
               return (
