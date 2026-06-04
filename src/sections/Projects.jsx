@@ -148,7 +148,7 @@ const Projects = () => {
                     </div>
                     <div className="p-6">
                       <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                      <p className="text-slate-400 text-sm mb-4 line-clamp-2">{project.description}</p>
+                      <p className="text-slate-400 text-sm mb-4">{project.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {project.tags?.map((tag, i) => (
                           <span key={i} className="px-3 py-1 bg-slate-900 border border-slate-700 rounded-full text-xs text-cyan-400 font-medium">
