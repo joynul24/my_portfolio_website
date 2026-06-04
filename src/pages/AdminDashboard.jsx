@@ -401,11 +401,11 @@ const AboutSettings = () => {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm text-slate-400 mb-1">Experience (e.g. '2+')</label>
+            <label className="block text-sm text-slate-400 mb-1">Experience (e.g. '5+')</label>
             <input type="text" value={formData.experience} onChange={(e) => setFormData({...formData, experience: e.target.value})} className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white focus:border-cyan-500 outline-none" />
           </div>
           <div>
-            <label className="block text-sm text-slate-400 mb-1">Projects (e.g. '50+')</label>
+            <label className="block text-sm text-slate-400 mb-1">Projects (e.g. '150+')</label>
             <input type="text" value={formData.projects} onChange={(e) => setFormData({...formData, projects: e.target.value})} className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white focus:border-cyan-500 outline-none" />
           </div>
         </div>

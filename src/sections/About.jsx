@@ -64,7 +64,7 @@ const About = () => {
                 <div className="absolute inset-0 bg-slate-700 transition-opacity duration-300 group-hover:opacity-0"></div>
                 <div className="absolute inset-[-200%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0%,#06b6d4_30%,transparent_50%,#a855f7_80%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative p-4 rounded-[11px] bg-slate-800 h-full w-full flex flex-col">
-                  <h4 className="text-3xl font-bold text-cyan-400 mb-2">{profile?.experience || '2+'}</h4>
+                  <h4 className="text-3xl font-bold text-cyan-400 mb-2">{profile?.experience || '5+'}</h4>
                   <p className="text-sm uppercase tracking-wider font-medium text-slate-400">Years of Experience</p>
                 </div>
               </div>
@@ -72,7 +72,7 @@ const About = () => {
                 <div className="absolute inset-0 bg-slate-700 transition-opacity duration-300 group-hover:opacity-0"></div>
                 <div className="absolute inset-[-200%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0%,#a855f7_30%,transparent_50%,#06b6d4_80%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative p-4 rounded-[11px] bg-slate-800 h-full w-full flex flex-col">
-                  <h4 className="text-3xl font-bold text-purple-400 mb-2">{profile?.projects || '50+'}</h4>
+                  <h4 className="text-3xl font-bold text-purple-400 mb-2">{profile?.projects || '150+'}</h4>
                   <p className="text-sm uppercase tracking-wider font-medium text-slate-400">Projects Completed</p>
                 </div>
               </div>
