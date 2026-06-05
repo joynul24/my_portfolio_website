@@ -20,7 +20,7 @@ const Projects = () => {
 
 
   const filteredProjects = Array.isArray(allProjects)
-    ? activeTab === 'All'
+    ? activeTab === 'Frontend'
       ? allProjects
       : allProjects.filter(
         (project) => project.category === activeTab
