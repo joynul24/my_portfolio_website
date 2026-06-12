@@ -9,6 +9,7 @@ import Loader from '../components/Loader';
 import MySkills from '../sections/MySkills';
 import Services from '../sections/Services';
 import Experience from '../sections/Experience';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -24,15 +25,34 @@ const Home = () => {
 
   return (
     <div className="relative">
+
+      <Helmet>
+        <title>
+          DevJoynul26 | Joynul Abedin | MERN Stack Developer
+        </title>
+
+        <meta
+          name="description"
+          content="Joynul Abedin (DevJoynul26) is a MERN Stack Developer from Bangladesh. Explore my portfolio, projects, skills and contact information."
+        />
+
+        <meta
+          name="keywords"
+          content="DevJoynul26, Joynul Abedin, MERN Stack Developer, React Developer, Full Stack Developer, Bangladesh"
+        />
+
+        <meta name="author" content="Joynul Abedin" />
+      </Helmet>
+
       <Navbar />
       <main>
         <Hero />
         <About />
         <Services></Services>
-        <MySkills></MySkills> 
+        <MySkills></MySkills>
         <Experience></Experience>
         <Projects />
-        <Contact /> 
+        <Contact />
       </main>
       <Footer />
     </div>
