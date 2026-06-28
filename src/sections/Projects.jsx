@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiExternalLink, FiGithub } from 'react-icons/fi';
+import { FiExternalLink, FiGithub } from 'react-scroll';
+import { FiExternalLink as LinkIcon, FiGithub as GithubIcon } from 'react-icons/fi';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '../api/axiosInstance';
 
@@ -18,12 +19,37 @@ const Projects = () => {
     }
   });
 
+  const getMixedProjects = (projects) => {
+    if (!Array.isArray(projects) || projects.length === 0) return [];
+
+    const fullStack = projects.filter(p => p.category === 'Full Stack');
+    const frontend = projects.filter(p => p.category === 'Frontend');
+    
+    const mixed = [];
+    let fIndex = 0;
+    let frIndex = 0;
+
+    while (fIndex < fullStack.length || frIndex < frontend.length) {
+      for (let i = 0; i < 2; i++) {
+        if (fIndex < fullStack.length) {
+          mixed.push(fullStack[fIndex]);
+          fIndex++;
+        }
+      }
+      if (frIndex < frontend.length) {
+        mixed.push(frontend[frIndex]);
+        frIndex++;
+      }
+    }
+
+    const remaining = projects.filter(p => p.category !== 'Full Stack' && p.category !== 'Frontend');
+    return [...mixed, ...remaining];
+  };
+
   const filteredProjects = Array.isArray(allProjects)
     ? activeTab === 'All'
-      ? allProjects
-      : allProjects.filter(
-        (project) => project.category === activeTab
-      )
+      ? getMixedProjects(allProjects)
+      : allProjects.filter((project) => project.category === activeTab)
     : [];
 
   const displayedProjects = showAll
@@ -98,7 +124,7 @@ const Projects = () => {
                             rel="noreferrer"
                             className="p-3 bg-cyan-500 text-slate-900 rounded-full hover:scale-110 transition-transform"
                           >
-                            <FiExternalLink size={20} />
+                            <LinkIcon size={20} />
                           </a>
                         )}
 
@@ -109,7 +135,7 @@ const Projects = () => {
                             rel="noreferrer"
                             className="p-3 bg-slate-700 text-white rounded-full hover:scale-110 transition-transform"
                           >
-                            <FiGithub size={20} />
+                            <GithubIcon size={20} />
                           </a>
                         )}
                       </div>

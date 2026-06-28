@@ -59,20 +59,17 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* ইমেজ ও ঘূর্ণায়মান রিং সেকশন */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
           className="relative flex justify-center items-center select-none"
         >
-          {/* মেইন ঘূর্ণায়মান কক্ষপথ (Orbit Container) */}
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
             className="absolute w-[380px] h-[380px] md:w-[500px] md:h-[500px] rounded-full border border-slate-800/40 flex items-center justify-center z-30 hidden sm:block"
           >
-            {/* ১. React Icon (Top) - কক্ষপথের সাথে কাউন্টার-রোটেট হয়ে একদম সোজা থাকবে */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <motion.div 
                 animate={{ rotate: -360 }}
@@ -84,7 +81,6 @@ const Hero = () => {
               </motion.div>
             </div>
 
-            {/* ২. JavaScript Icon (Right) - একদম সোজা থাকবে */}
             <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2">
               <motion.div 
                 animate={{ rotate: -360 }}
@@ -96,7 +92,6 @@ const Hero = () => {
               </motion.div>
             </div>
 
-            {/* ৩. Node.js Icon (Bottom) - একদম সোজা থাকবে */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
               <motion.div 
                 animate={{ rotate: -360 }}
@@ -108,7 +103,6 @@ const Hero = () => {
               </motion.div>
             </div>
 
-            {/* ৪. MongoDB Icon (Left) - একদম সোজা থাকবে */}
             <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <motion.div 
                 animate={{ rotate: -360 }}
@@ -121,7 +115,6 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* মেইন ইমেজ ফ্রেম */}
           <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full p-2 bg-gradient-to-tr from-cyan-500 via-purple-500 to-blue-500 shadow-[0_0_50px_rgba(6,182,212,0.25)] z-10">
             <div className="absolute inset-2 bg-slate-900 rounded-full"></div>
             <img 
