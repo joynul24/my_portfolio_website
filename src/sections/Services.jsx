@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from "framer-motion";
-import { Monitor, Palette, Smartphone, Zap, Layers, Webhook } from 'lucide-react';
+import { Monitor, Palette,Layout, Zap, Layers, Webhook } from 'lucide-react';
 
 const servicesData = [
   {
@@ -14,9 +14,9 @@ const servicesData = [
     description: 'Creating beautiful, user-centered designs that enhance user experience and engagement.',
   },
   {
-    icon: <Smartphone className="w-8 h-8 text-green-500" />,
-    title: 'Mobile Development',
-    description: 'Developing cross-platform mobile applications with React Native and responsive design.',
+    icon: <Layout className="w-8 h-8 text-green-500" />,
+    title: 'Custom Web Apps',
+    description: 'Building high-performance Single Page Applications (SPA) and dynamic user dashboards tailored to business needs.',
   },
   {
     icon: <Zap className="w-8 h-8 text-yellow-500" />,

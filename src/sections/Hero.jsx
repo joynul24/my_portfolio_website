@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 import { Link } from 'react-scroll';
+import { FaReact, FaNodeJs } from 'react-icons/fa';
+import { SiJavascript, SiMongodb } from 'react-icons/si';
 
 const Hero = () => {
   return (
@@ -25,7 +27,7 @@ const Hero = () => {
             <div className="text-3xl md:text-4xl lg:text-5xl mt-2 leading-tight">
               <Typewriter
                 options={{
-                  strings: ['MERN Stack Developer', 'Problem Solver', 'React Specialist','Lifelong Learner'],
+                  strings: ['MERN Stack Developer', 'React & Frontend Specialist', 'Building High-Converting Web Apps','Clean Code & Seamless UX'],
                   autoStart: true,
                   loop: true,
                   wrapperClassName: "text-slate-200",
@@ -35,7 +37,7 @@ const Hero = () => {
             </div>
           </h1>
           <p className="text-slate-400 text-lg md:text-xl max-w-lg leading-relaxed">
-            I build modern, scalable, and beautifully animated web applications. Passionate about creating seamless user experiences.
+            I build modern, scalable, and beautifully animated full-stack web applications. Passionate about creating seamless user experiences and clean architectures.
           </p>
           <div className="flex flex-wrap gap-4 pt-4">
             <Link 
@@ -57,19 +59,75 @@ const Hero = () => {
           </div>
         </motion.div>
 
+        {/* ইমেজ ও ঘূর্ণায়মান রিং সেকশন */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="relative flex justify-center items-center"
+          className="relative flex justify-center items-center select-none"
         >
-          <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full p-2 bg-gradient-to-tr from-cyan-500 via-purple-500 to-blue-500">
+          {/* মেইন ঘূর্ণায়মান কক্ষপথ (Orbit Container) */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[380px] h-[380px] md:w-[500px] md:h-[500px] rounded-full border border-slate-800/40 flex items-center justify-center z-30 hidden sm:block"
+          >
+            {/* ১. React Icon (Top) - কক্ষপথের সাথে কাউন্টার-রোটেট হয়ে একদম সোজা থাকবে */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <motion.div 
+                animate={{ rotate: -360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="p-3 bg-slate-900 border border-slate-700 rounded-xl text-[#61DAFB] text-2xl shadow-lg flex items-center justify-center"
+                style={{ transformOrigin: "center center" }}
+              >
+                <FaReact />
+              </motion.div>
+            </div>
+
+            {/* ২. JavaScript Icon (Right) - একদম সোজা থাকবে */}
+            <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2">
+              <motion.div 
+                animate={{ rotate: -360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="p-3 bg-slate-900 border border-slate-700 rounded-xl text-[#F7DF1E] text-2xl shadow-lg flex items-center justify-center"
+                style={{ transformOrigin: "center center" }}
+              >
+                <SiJavascript />
+              </motion.div>
+            </div>
+
+            {/* ৩. Node.js Icon (Bottom) - একদম সোজা থাকবে */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
+              <motion.div 
+                animate={{ rotate: -360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="p-3 bg-slate-900 border border-slate-700 rounded-xl text-[#339933] text-2xl shadow-lg flex items-center justify-center"
+                style={{ transformOrigin: "center center" }}
+              >
+                <FaNodeJs />
+              </motion.div>
+            </div>
+
+            {/* ৪. MongoDB Icon (Left) - একদম সোজা থাকবে */}
+            <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <motion.div 
+                animate={{ rotate: -360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="p-3 bg-slate-900 border border-slate-700 rounded-xl text-[#47A248] text-2xl shadow-lg flex items-center justify-center"
+                style={{ transformOrigin: "center center" }}
+              >
+                <SiMongodb />
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* মেইন ইমেজ ফ্রেম */}
+          <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full p-2 bg-gradient-to-tr from-cyan-500 via-purple-500 to-blue-500 shadow-[0_0_50px_rgba(6,182,212,0.25)] z-10">
             <div className="absolute inset-2 bg-slate-900 rounded-full"></div>
-            {/* Provided Image per user request */}
             <img 
               src="/banner-img.png" 
               alt="Joynul" 
-              className="absolute inset-0 w-full h-full object-cover rounded-full p-4 hover:scale-105 transition-transform duration-500" 
+              className="absolute inset-0 w-full h-full object-cover rounded-full p-4 hover:scale-105 transition-transform duration-500 z-10" 
             />
           </div>
         </motion.div>
