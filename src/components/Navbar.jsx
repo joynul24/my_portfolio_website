@@ -53,12 +53,12 @@ const Navbar = () => {
             ))}
           </nav>
           <a 
-            href="https://docs.google.com/document/d/1ay-5XywRiqSJFi2K7Hmg1mZejiB2kPRqBtNt8aQq7M8/export?format=pdf" 
+            href="https://rxresu.me/joynula919/joynul-abedin" 
             target="_blank" 
             rel="noopener noreferrer"
             className="px-5 py-2 rounded-full border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-slate-900 transition-all font-medium text-sm shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.6)]"
           >
-            Download Resume
+            View Resume
           </a>
         </div>
 
