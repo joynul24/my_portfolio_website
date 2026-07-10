@@ -4,6 +4,7 @@ import Typewriter from 'typewriter-effect';
 import { Link } from 'react-scroll';
 import { FaReact, FaNodeJs } from 'react-icons/fa';
 import { SiJavascript, SiMongodb } from 'react-icons/si';
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const Hero = () => {
   return (
@@ -20,8 +21,16 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="space-y-3 md:space-y-6"
         >
-          <h3 className="text-cyan-400 font-medium tracking-wide uppercase text-sm md:text-base">Welcome to my world</h3>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+           <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-border text-sm mb-6 border-gray-500 jetbrains-mono"
+          >
+            <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+            Welcome to my world
+          </motion.div>
+          <h1 className="space-grotesk text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
             Hi, I’m <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Joynul</span>
             <br />
             <div className="text-3xl md:text-4xl lg:text-5xl mt-2 leading-tight">
@@ -39,14 +48,14 @@ const Hero = () => {
           <p className="text-slate-400 text-lg md:text-xl max-w-lg leading-relaxed">
             I build modern, scalable, and beautifully animated full-stack web applications. Passionate about creating seamless user experiences and clean architectures.
           </p>
-          <div className="flex flex-wrap gap-4 pt-4">
+          <div className="flex flex-wrap gap-4 pt-4 space-grotesk">
             <Link 
               to="projects" 
               spy={true} 
               smooth={true} 
-              className="px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold cursor-pointer shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] transition-all transform hover:-translate-y-1 w-full md:w-auto"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold cursor-pointer shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] transition-all transform hover:-translate-y-1 w-full md:w-auto"
             >
-              View My Work
+              View My Work  <FaArrowRightLong />
             </Link>
             <Link 
               to="contact" 

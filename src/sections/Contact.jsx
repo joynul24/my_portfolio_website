@@ -61,7 +61,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Get In <span className="text-purple-400">Touch</span></h2>
+          <h2 className="space-grotesk text-3xl md:text-5xl font-bold mb-4">Get In <span className="text-purple-400">Touch</span></h2>
           <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto rounded-full"></div>
         </motion.div>
 
@@ -73,13 +73,13 @@ const Contact = () => {
             className="space-y-8"
           >
              <div>
-              <h3 className="text-3xl font-bold text-white mb-4">Let's Talk About Your Project</h3>
+              <h3 className="space-grotesk text-3xl font-bold text-white mb-4">Let's Talk About Your Project</h3>
               <p className="text-slate-400 text-lg">
                 Feel free to reach out to me for any inquiries, collaborations, or just to say hi! I'm always open to discussing new projects and creative ideas.
               </p>
              </div>
 
-             <div className="space-y-6">
+             <div className="jetbrains-mono space-y-6">
                <div className="flex items-center gap-4 group">
                  <div className="w-12 h-12 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400 group-hover:border-cyan-500 group-hover:bg-cyan-500 group-hover:text-slate-900 transition-all">
                    <FiMail size={20} />
@@ -173,7 +173,7 @@ const Contact = () => {
               <button 
                 type="submit" 
                 disabled={loading}
-                className="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold tracking-wide flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all disabled:opacity-70"
+                className="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold tracking-wide flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all disabled:opacity-70 jetbrains-mono"
               >
                 {loading ? 'Sending...' : (
                   <>

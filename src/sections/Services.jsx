@@ -46,10 +46,10 @@ const Services = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 mb-4 inline-block pb-2">
+          <h2 className="space-grotesk text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 mb-4 inline-block pb-2">
             My Services
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="jetbrains-mono text-gray-400 max-w-2xl mx-auto">
             Providing a wide range of services to help you build and scale your digital products.
           </p>
         </motion.div>
@@ -67,7 +67,7 @@ const Services = () => {
               <div className="bg-gray-800/50 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
                 {service.icon}
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">
+              <h3 className="space-grotesk text-xl font-semibold text-white mb-3">
                 {service.title}
               </h3>
               <p className="text-gray-400">

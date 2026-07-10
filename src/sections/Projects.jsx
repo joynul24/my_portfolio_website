@@ -65,7 +65,7 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">My <span className="text-cyan-400">Journey</span></h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">My <span className="space-grotesk text-cyan-400">Journey</span></h2>
           <div className="w-20 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full mb-8"></div>
 
           <div className="flex flex-wrap justify-center gap-4">
@@ -141,9 +141,9 @@ const Projects = () => {
                       </div>
                     </div>
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                      <h3 className="space-grotesk text-xl font-bold text-white mb-2">{project.title}</h3>
                       <p className="text-slate-400 text-sm mb-4">{project.description}</p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="jetbrains-mono flex flex-wrap gap-2">
                         {project.tags?.map((tag, i) => (
                           <span key={i} className="px-3 py-1 bg-slate-900 border border-slate-700 rounded-full text-xs text-cyan-400 font-medium">
                             {tag}

@@ -25,13 +25,13 @@ const Navbar = () => {
 
   return (
     <header className={`fixed top-0 w-full z-40 transition-all duration-300 ${isScrolled ? 'bg-slate-900/80 backdrop-blur-md shadow-lg py-3' : 'bg-transparent py-5'}`}>
-      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+      <div className="space-grotesk container mx-auto px-6 md:px-12 flex items-center justify-between">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-2xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 cursor-pointer"
+          className="jetbrains-mono text-2xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 cursor-pointer"
         >
-          Joynul<span className="text-white">.</span>
+          Joynul<span className="text-white">.dev</span>
         </motion.div>
 
         {/* Desktop Nav */}

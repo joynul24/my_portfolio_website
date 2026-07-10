@@ -22,7 +22,7 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">About <span className="text-cyan-400">Me</span></h2>
+          <h2 className="space-grotesk text-3xl md:text-5xl font-bold mb-4">About <span className="text-cyan-400">Me</span></h2>
           <div className="w-20 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full"></div>
         </motion.div>
 
@@ -51,7 +51,7 @@ const About = () => {
             viewport={{ once: true }}
             className="space-y-6 text-slate-300"
           >
-            <h3 className="text-2xl font-semibold text-white">{profile?.title || 'Transforming Ideas into Exceptional Digital Experiences'}</h3>
+            <h3 className="space-grotesk text-2xl font-semibold text-white">{profile?.title || 'Transforming Ideas into Exceptional Digital Experiences'}</h3>
             <p className="leading-relaxed text-lg">
               {profile?.description1 || 'I am Joynul, a passionate Full Stack Developer with expertise in the MERN stack. I specialize in building robust, beautifully animated, and responsive web applications that solve real-world problems.'}
             </p>
@@ -59,7 +59,7 @@ const About = () => {
               {profile?.description2 || 'My journey involves constant learning and implementing clean architecture, focusing on performance, scalability, and seamless UI/UX design. When I\'m not writing code, I love exploring new technologies and writing technical blogs.'}
             </p>
             
-            <div className="grid grid-cols-2 gap-6 pt-6">
+            <div className="space-grotesk grid grid-cols-2 gap-6 pt-6">
               <div className="relative p-[1px] rounded-xl overflow-hidden group hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-300">
                 <div className="absolute inset-0 bg-slate-700 transition-opacity duration-300 group-hover:opacity-0"></div>
                 <div className="absolute inset-[-200%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0%,#06b6d4_30%,transparent_50%,#a855f7_80%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

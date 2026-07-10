@@ -70,10 +70,10 @@ const Experience = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16 md:mb-24"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="space-grotesk text-3xl md:text-5xl font-bold text-white mb-4">
              Work Experience
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
+          <p className="jetbrains-mono text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
             My professional journey in frontend development and the impactful projects I've worked on.
           </p>
         </motion.div>
@@ -117,9 +117,9 @@ const ExperienceCard = ({ exp, isEven, index }) => {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className={`bg-slate-800/60 backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-slate-800/80 transition-all duration-300 text-left flex flex-col w-full shadow-xl shadow-black/20`}
     >
-      <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{exp.title}</h3>
+      <h3 className="space-grotesk text-xl md:text-2xl font-bold text-white mb-2">{exp.title}</h3>
       
-      <div className={`flex flex-col xl:flex-row xl:items-center gap-2 xl:gap-4 text-sm text-gray-400 mb-6`}>
+      <div className={`space-grotesk flex flex-col xl:flex-row xl:items-center gap-2 xl:gap-4 text-sm text-gray-400 mb-6`}>
         <div className="flex items-center gap-1.5">
           <Building2 size={16} className="text-purple-400 shrink-0" />
           <span>{exp.company}</span>
@@ -145,7 +145,7 @@ const ExperienceCard = ({ exp, isEven, index }) => {
         ))}
       </ul>
 
-      <div className={`flex flex-wrap gap-2 mt-auto`}>
+      <div className={`jetbrains-mono flex flex-wrap gap-2 mt-auto`}>
         {exp.skills.map((skill, i) => (
           <span 
             key={i} 

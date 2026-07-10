@@ -6,12 +6,12 @@ const Footer = () => {
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
 
         {/* Logo */}
-        <div className="text-xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-4 md:mb-0">
-          Joynul<span className="text-white">.</span>
+        <div className="space-grotesk text-xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-4 md:mb-0">
+          Joynul<span className='text-white'>.dev</span><span className="text-white"></span>
         </div>
 
         {/* Copyright */}
-        <p className="text-slate-500 text-sm">
+        <p className="jetbrains-mono text-slate-500 text-sm">
           &copy; {new Date().getFullYear()} Joynul. All rights reserved.
         </p>
 
