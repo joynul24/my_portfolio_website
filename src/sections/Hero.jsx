@@ -83,7 +83,7 @@ const Hero = () => {
               <motion.div 
                 animate={{ rotate: -360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="p-3 bg-slate-900 border border-slate-700 rounded-xl text-[#61DAFB] text-2xl shadow-lg flex items-center justify-center"
+                className="p-3 bg-slate-900 border border-slate-700 rounded-xl text-[#61DAFB] text-2xl shadow-lg flex items-center justify-center shadow-cyan-400"
                 style={{ transformOrigin: "center center" }}
               >
                 <FaReact />
@@ -94,7 +94,7 @@ const Hero = () => {
               <motion.div 
                 animate={{ rotate: -360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="p-3 bg-slate-900 border border-slate-700 rounded-xl text-[#F7DF1E] text-2xl shadow-lg flex items-center justify-center"
+                className="p-3 bg-slate-900 border border-slate-700 rounded-xl text-[#F7DF1E] text-2xl shadow-lg flex items-center justify-center shadow-amber-400"
                 style={{ transformOrigin: "center center" }}
               >
                 <SiJavascript />
@@ -105,7 +105,7 @@ const Hero = () => {
               <motion.div 
                 animate={{ rotate: -360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="p-3 bg-slate-900 border border-slate-700 rounded-xl text-[#339933] text-2xl shadow-lg flex items-center justify-center"
+                className="p-3 bg-slate-900 border border-slate-700 rounded-xl text-[#339933] text-2xl shadow-lg flex items-center justify-center shadow-emerald-400"
                 style={{ transformOrigin: "center center" }}
               >
                 <FaNodeJs />
@@ -116,7 +116,7 @@ const Hero = () => {
               <motion.div 
                 animate={{ rotate: -360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="p-3 bg-slate-900 border border-slate-700 rounded-xl text-[#47A248] text-2xl shadow-lg flex items-center justify-center"
+                className="p-3 bg-slate-900 border border-slate-700 rounded-xl text-[#47A248] text-2xl shadow-lg flex items-center justify-center shadow-green-400"
                 style={{ transformOrigin: "center center" }}
               >
                 <SiMongodb />
@@ -127,7 +127,7 @@ const Hero = () => {
           <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full p-2 bg-gradient-to-tr from-cyan-500 via-purple-500 to-blue-500 shadow-[0_0_50px_rgba(6,182,212,0.25)] z-10">
             <div className="absolute inset-2 bg-slate-900 rounded-full"></div>
             <img 
-              src="/banner-img.png" 
+              src="/developer2.png" 
               alt="Joynul" 
               className="absolute inset-0 w-full h-full object-cover rounded-full p-4 hover:scale-105 transition-transform duration-500 z-10" 
             />
