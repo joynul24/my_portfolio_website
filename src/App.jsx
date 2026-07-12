@@ -5,6 +5,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import { Toaster } from 'react-hot-toast';
 import BackToTop from './components/BackToTop';
 import AnimatedBackground from './components/AnimatedBackground';
+import ParticleCursor from './components/ParticleCursor';
 
 
 
@@ -13,6 +14,7 @@ export default function App() {
     <Router>
       <div className="font-sans min-h-screen text-white relative">
         <AnimatedBackground />
+        <ParticleCursor></ParticleCursor>
 
         <Routes>
           <Route path="/" element={<Home />} />

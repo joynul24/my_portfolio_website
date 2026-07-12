@@ -90,7 +90,7 @@ const MySkills = () => {
           <h2 className="space-grotesk text-3xl md:text-5xl font-bold mb-3 tracking-tight">
             Skills & <span className="text-purple-400">Technologies</span>
           </h2>
-          <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto">
+          <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto jetbrains-mono">
             A comprehensive toolkit for building modern web applications
           </p>
         </motion.div>
