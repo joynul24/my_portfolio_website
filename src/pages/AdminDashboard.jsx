@@ -6,6 +6,18 @@ import { FiLogOut, FiPlus, FiEdit, FiTrash2, FiX } from 'react-icons/fi';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axiosInstance from '../api/axiosInstance';
 
+const PROJECT_CATEGORIES = [
+  'E-Commerce',
+  'FinTech & Productivity',
+  'Real Estate & Property',
+  'Non-Profit & Community',
+  'Travel & Tourism',
+  'Healthcare & Wellness',
+  'Education & E-Learning',
+  'Agency & Portfolio',
+  'Food & Delivery'
+];
+
 const AdminDashboard = () => {
   const [token, setToken] = useState(localStorage.getItem('adminToken') || '');
   const [password, setPassword] = useState('');
@@ -21,7 +33,7 @@ const AdminDashboard = () => {
     description: '',
     image: '',
     tags: '',
-    category: 'Full Stack',
+    category: PROJECT_CATEGORIES[0],
     liveLink: '',
     codeLink: ''
   });
@@ -34,7 +46,6 @@ const AdminDashboard = () => {
     },
     enabled: !!token
   });
-
 
   const createMutation = useMutation({
     mutationFn: async (newProj) => await axiosInstance.post('/projects', newProj),
@@ -87,13 +98,13 @@ const AdminDashboard = () => {
         description: project.description || '',
         image: project.image || '',
         tags: project.tags ? project.tags.join(', ') : '',
-        category: project.category || 'Full Stack',
+        category: project.category || PROJECT_CATEGORIES[0],
         liveLink: project.liveLink || '',
         codeLink: project.codeLink || ''
       });
     } else {
       setEditingProject(null);
-      setFormData({ title: '', description: '', image: '', tags: '', category: 'Full Stack', liveLink: '', codeLink: '' });
+      setFormData({ title: '', description: '', image: '', tags: '', category: PROJECT_CATEGORIES[0], liveLink: '', codeLink: '' });
     }
     setIsModalOpen(true);
   };
@@ -289,10 +300,15 @@ const AdminDashboard = () => {
                   </div>
                   <div>
                     <label className="block text-sm text-slate-400 mb-1">Category</label>
-                    <select value={formData.category} onChange={(e) => setFormData({...formData, category: e.target.value})} className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white focus:border-cyan-500 outline-none">
-                      <option>Full Stack</option>
-                      <option>Frontend</option>
-                      <option>Static</option>
+                    {/* 💡 এখানে প্রিমিয়াম ড্রপডাউন সিলেক্ট যুক্ত করা হয়েছে */}
+                    <select 
+                      value={formData.category} 
+                      onChange={(e) => setFormData({...formData, category: e.target.value})} 
+                      className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white focus:border-cyan-500 outline-none cursor-pointer"
+                    >
+                      {PROJECT_CATEGORIES.map((cat) => (
+                        <option key={cat} value={cat} className="bg-slate-900 text-white">{cat}</option>
+                      ))}
                     </select>
                   </div>
                 </div>
