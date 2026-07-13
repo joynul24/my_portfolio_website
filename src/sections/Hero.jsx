@@ -8,7 +8,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 const Hero = () => {
   return (
-    <section id="home" className="pt-20 pb-20 md:pt-48 md:pb-32 min-h-screen flex items-center relative overflow-hidden">
+    <section id="home" className="pt-24 pb-20 md:pt-48 md:pb-32 min-h-screen flex items-center relative overflow-hidden">
       {/* Background blobs */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl -z-10 mix-blend-screen animate-blob"></div>
       <div className="absolute top-40 right-20 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl -z-10 mix-blend-screen animate-blob animation-delay-2000"></div>
