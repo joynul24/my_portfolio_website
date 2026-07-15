@@ -37,7 +37,7 @@ const About = () => {
               <div className="absolute inset-0 bg-cyan-500/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
               {/* As requested, first picture in about section. Using standard professional placeholder or user provided style */}
               <img 
-                src="/about2.jpeg" 
+                src="/about4.jpeg" 
                 alt="Joynul About" 
                 className="w-full max-w-sm rounded-2xl scale-100 group-hover:scale-105 transition-transform duration-700 object-cover grayscale group-hover:grayscale-0"
                 onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=800&q=80" }}
