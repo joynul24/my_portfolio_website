@@ -36,7 +36,6 @@ const AdminDashboard = () => {
     queryKey: ['admin_projects'],
     queryFn: async () => {
       const res = await axiosInstance.get('/projects');
-      // Assuming backend sorts by an 'order' field or we sort it out here
       return res.data;
     },
     enabled: !!token
@@ -60,28 +59,28 @@ const AdminDashboard = () => {
     setLocalProjects(items);
   };
 
-// Mutation to save sorted order to the backend database
-const saveOrderMutation = useMutation({
-  mutationFn: async (updatedList) => {
-    const payload = {
-      sortedProjects: updatedList.map((proj) => ({
-        _id: proj._id,
-      }))
-    };
+  // Mutation to save sorted order to the backend database
+  const saveOrderMutation = useMutation({
+    mutationFn: async (updatedList) => {
+      const payload = {
+        sortedProjects: updatedList.map((proj) => ({
+          _id: proj._id,
+        }))
+      };
 
-    const res = await axiosInstance.put('/projects/reorder', payload);
-    return res.data;
-  },
-  onSuccess: () => {
-    queryClient.invalidateQueries({ queryKey: ['admin_projects'] });
-    toast.success('Project sequence updated successfully');
-    setIsReorganizeOpen(false);
-  },
-  onError: (error) => {
-    console.error("Reorder Error Details:", error.response?.data || error.message);
-    toast.error(error.response?.data?.message || 'Failed to save project sequence');
-  }
-});
+      const res = await axiosInstance.put('/projects/reorder', payload);
+      return res.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin_projects'] });
+      toast.success('Project sequence updated successfully');
+      setIsReorganizeOpen(false);
+    },
+    onError: (error) => {
+      console.error("Reorder Error Details:", error.response?.data || error.message);
+      toast.error(error.response?.data?.message || 'Failed to save project sequence');
+    }
+  });
 
   // Create Project Mutation
   const createMutation = useMutation({
@@ -210,14 +209,15 @@ const saveOrderMutation = useMutation({
         </aside>
         
         {/* Main Workspace */}
-        <main className="flex-1 p-6 md:p-12 overflow-y-auto">
+        <main className="flex-1 p-4 sm:p-6 md:p-12 overflow-y-auto w-full max-w-full">
           {activeTab === 'projects' && (
             <>
-              <div className="flex justify-between items-center mb-8">
-                <h1 className="text-3xl font-bold">Manage Projects</h1>
-                <div className="flex gap-3">
-                  <button onClick={() => setIsReorganizeOpen(true)} className="px-4 py-2 bg-slate-800 border border-slate-700 text-slate-300 rounded-lg font-medium hover:bg-slate-700 transition-colors">Reorganize</button>
-                  <button onClick={() => openModal()} className="flex items-center gap-2 px-4 py-2 bg-cyan-500 text-slate-900 rounded-lg font-medium hover:bg-cyan-400 transition-colors"><FiPlus /> Add Project</button>
+              {/* Responsive Title Header wrapper */}
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
+                <h1 className="text-2xl sm:text-3xl font-bold">Manage Projects</h1>
+                <div className="flex gap-3 w-full sm:w-auto">
+                  <button onClick={() => setIsReorganizeOpen(true)} className="flex-1 sm:flex-none text-center px-4 py-2 bg-slate-800 border border-slate-700 text-slate-300 rounded-lg font-medium hover:bg-slate-700 transition-colors text-sm sm:text-base">Reorganize</button>
+                  <button onClick={() => openModal()} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-cyan-500 text-slate-900 rounded-lg font-medium hover:bg-cyan-400 transition-colors text-sm sm:text-base"><FiPlus /> Add Project</button>
                 </div>
               </div>
               
@@ -226,43 +226,50 @@ const saveOrderMutation = useMutation({
               ) : localProjects.length === 0 ? (
                 <div className="bg-slate-900 border border-slate-800 rounded-2xl p-10 text-center text-slate-400">No projects found. Add one!</div>
               ) : (
-                <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
-                  <table className="w-full text-left">
-                    <thead className="bg-slate-950/40 border-b border-slate-800">
-                      <tr>
-                        <th className="p-4 text-xs font-semibold text-slate-400 tracking-wider">Project Info</th>
-                        <th className="p-4 text-xs font-semibold text-slate-400 tracking-wider">Category</th>
-                        <th className="p-4 text-xs font-semibold text-slate-400 tracking-wider">Links</th>
-                        <th className="p-4 text-xs font-semibold text-slate-400 tracking-wider text-right">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {localProjects.map((proj) => (
-                        <tr key={proj._id} className="border-b border-slate-800/40 hover:bg-slate-800/10">
-                          <td className="p-4">
-                            <div className="flex items-center gap-3">
-                              <img src={proj.image || 'https://via.placeholder.com/50'} alt={proj.title} className="w-12 h-12 rounded-lg object-cover border border-slate-700" />
-                              <div>
-                                <p className="font-semibold text-white text-sm">{proj.title}</p>
-                                <p className="text-xs text-slate-400 line-clamp-1 max-w-[280px] mt-0.5">{proj.description}</p>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="p-4"><span className="px-2 py-1 bg-slate-800 rounded text-xs text-cyan-400">{proj.category}</span></td>
-                          <td className="p-4 space-x-3">
-                            {proj.liveLink && <a href={proj.liveLink} target="_blank" rel="noreferrer" className="text-xs font-medium text-cyan-400 hover:text-cyan-300">Live</a>}
-                            {proj.codeLink && <a href={proj.codeLink} target="_blank" rel="noreferrer" className="text-xs font-medium text-purple-400 hover:text-purple-300">Code</a>}
-                          </td>
-                          <td className="p-4 text-right">
-                            <div className="flex justify-end gap-2">
-                              <button onClick={() => openModal(proj)} className="p-2 bg-slate-800/80 text-slate-300 rounded-lg hover:text-cyan-400"><FiEdit size={16} /></button>
-                              <button onClick={() => handleDelete(proj._id)} className="p-2 bg-slate-800/80 text-slate-300 rounded-lg hover:text-red-400"><FiTrash2 size={16} /></button>
-                            </div>
-                          </td>
+                /* Table wrapper with overflow-x-auto handles responsive text clipping */
+                <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden w-full">
+                  <div className="overflow-x-auto w-full">
+                    <table className="w-full text-left min-w-[700px] border-collapse">
+                      <thead className="bg-slate-950/40 border-b border-slate-800">
+                        <tr>
+                          <th className="p-4 text-xs font-semibold text-slate-400 tracking-wider w-[45%]">Project Info</th>
+                          <th className="p-4 text-xs font-semibold text-slate-400 tracking-wider w-[25%]">Category</th>
+                          <th className="p-4 text-xs font-semibold text-slate-400 tracking-wider w-[15%]">Links</th>
+                          <th className="p-4 text-xs font-semibold text-slate-400 tracking-wider text-right w-[15%]">Actions</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        {localProjects.map((proj) => (
+                          <tr key={proj._id} className="border-b border-slate-800/40 hover:bg-slate-800/10">
+                            <td className="p-4">
+                              <div className="flex items-center gap-3">
+                                <img src={proj.image || 'https://via.placeholder.com/50'} alt={proj.title} className="w-12 h-12 rounded-lg object-cover border border-slate-700 flex-shrink-0" />
+                                <div className="min-w-0">
+                                  <p className="font-semibold text-white text-sm truncate">{proj.title}</p>
+                                  <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">{proj.description}</p>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="p-4">
+                              <span className="inline-block px-2 py-1 bg-slate-800 rounded text-xs text-cyan-400 truncate max-w-full">
+                                {proj.category}
+                              </span>
+                            </td>
+                            <td className="p-4 space-x-3 whitespace-nowrap">
+                              {proj.liveLink && <a href={proj.liveLink} target="_blank" rel="noreferrer" className="text-xs font-medium text-cyan-400 hover:text-cyan-300">Live</a>}
+                              {proj.codeLink && <a href={proj.codeLink} target="_blank" rel="noreferrer" className="text-xs font-medium text-purple-400 hover:text-purple-300">Code</a>}
+                            </td>
+                            <td className="p-4 text-right">
+                              <div className="flex justify-end gap-2">
+                                <button onClick={() => openModal(proj)} className="p-2 bg-slate-800/80 text-slate-300 rounded-lg hover:text-cyan-400"><FiEdit size={16} /></button>
+                                <button onClick={() => handleDelete(proj._id)} className="p-2 bg-slate-800/80 text-slate-300 rounded-lg hover:text-red-400"><FiTrash2 size={16} /></button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               )}
             </>
@@ -433,19 +440,21 @@ const SkillsSettings = () => {
       </div>
       <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
         {isLoading ? ( <p className="p-6 text-slate-400">Loading skills...</p> ) : skills?.length === 0 ? ( <p className="p-6 text-slate-400 text-center">No skills found. Add one!</p> ) : (
-          <table className="w-full text-left">
-            <thead className="bg-slate-800 border-b border-slate-700"><tr><th className="p-4 font-medium text-slate-300">Name</th><th className="p-4 font-medium text-slate-300">Category</th><th className="p-4 font-medium text-slate-300">Level</th><th className="p-4 font-medium text-slate-300 text-right">Actions</th></tr></thead>
-            <tbody>
-              {skills?.map((skill) => (
-                <tr key={skill._id} className="border-b border-slate-800/50 hover:bg-slate-800/20">
-                  <td className="p-4 font-medium">{skill.name}</td>
-                  <td className="p-4"><span className="px-2 py-1 bg-slate-800 rounded text-xs text-purple-400">{skill.category}</span></td>
-                  <td className="p-4"><div className="flex items-center gap-2"><div className="w-full bg-slate-800 rounded-full h-1.5 max-w-[100px]"><div className="bg-cyan-500 h-1.5 rounded-full" style={{ width: `${skill.level}%` }}></div></div><span className="text-xs text-slate-400">{skill.level}%</span></div></td>
-                  <td className="p-4 text-right"><button onClick={() => handleDeleteSkill(skill._id)} className="p-2 bg-slate-800 text-slate-300 rounded hover:text-red-400"><FiTrash2 /></button></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="overflow-x-auto w-full">
+            <table className="w-full text-left min-w-[500px]">
+              <thead className="bg-slate-800 border-b border-slate-700"><tr><th className="p-4 font-medium text-slate-300">Name</th><th className="p-4 font-medium text-slate-300">Category</th><th className="p-4 font-medium text-slate-300">Level</th><th className="p-4 font-medium text-slate-300 text-right">Actions</th></tr></thead>
+              <tbody>
+                {skills?.map((skill) => (
+                  <tr key={skill._id} className="border-b border-slate-800/50 hover:bg-slate-800/20">
+                    <td className="p-4 font-medium">{skill.name}</td>
+                    <td className="p-4"><span className="px-2 py-1 bg-slate-800 rounded text-xs text-purple-400">{skill.category}</span></td>
+                    <td className="p-4"><div className="flex items-center gap-2"><div className="w-full bg-slate-800 rounded-full h-1.5 max-w-[100px]"><div className="bg-cyan-500 h-1.5 rounded-full" style={{ width: `${skill.level}%` }}></div></div><span className="text-xs text-slate-400">{skill.level}%</span></div></td>
+                    <td className="p-4 text-right"><button onClick={() => handleDeleteSkill(skill._id)} className="p-2 bg-slate-800 text-slate-300 rounded hover:text-red-400"><FiTrash2 /></button></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>
