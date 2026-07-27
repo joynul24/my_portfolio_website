@@ -7,14 +7,11 @@ import axiosInstance from '../api/axiosInstance';
 const tabs = [
   'All', 
   'E-Commerce', 
-  'FinTech & Productivity',
-  'Real Estate & Property', 
-  'Non-Profit & Community', 
-  'Travel & Tourism', 
-  'Healthcare & Wellness', 
-  'Education & E-Learning', 
-  'Agency & Portfolio', 
-  'Food & Delivery'
+  'EdTech',
+  'FinTech', 
+  'Healthcare', 
+  'Business & Agency', 
+  'Real Estate' 
 ];
 
 const cardVariants = {

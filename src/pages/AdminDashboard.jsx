@@ -7,9 +7,8 @@ import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import axiosInstance from '../api/axiosInstance';
 
 const PROJECT_CATEGORIES = [
-  'E-Commerce', 'FinTech & Productivity', 'Real Estate & Property',
-  'Non-Profit & Community', 'Travel & Tourism', 'Healthcare & Wellness',
-  'Education & E-Learning', 'Agency & Portfolio', 'Food & Delivery'
+  'E-Commerce', 'EdTech', 'FinTech',
+  'Healthcare', 'Business & Agency', 'Real Estate',
 ];
 
 const AdminDashboard = () => {
